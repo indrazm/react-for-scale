@@ -3,11 +3,15 @@ import { getProducts } from "../api/getProducts";
 import { ProductQueryParams } from "../types/products";
 
 export const useProducts = (params: ProductQueryParams) => {
-  const { data: products, isPending: isProductLoading } = useQuery({
-    initialData: [],
+  const {
+    data: products,
+    isPending,
+    isError,
+    error,
+  } = useQuery({
     queryKey: ["products", params],
     queryFn: () => getProducts(params),
   });
 
-  return { products, isProductLoading };
+  return { products, isPending, isError, error };
 };
