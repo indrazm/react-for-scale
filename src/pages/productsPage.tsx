@@ -1,12 +1,15 @@
 import { useProducts } from "../features/products/hooks/useProducts";
 
 export const ProductsPage = () => {
-  const { products, isError } = useProducts({
-    limit: 5,
-    offset: 15,
+  const { products, isPending, error } = useProducts({
+    category: "home",
   });
 
-  if (isError) {
+  console.log("Products:", products);
+  console.log("Error:", error);
+  console.log("Loading:", isPending);
+
+  if (error) {
     return <div>Can't get data</div>;
   }
 
