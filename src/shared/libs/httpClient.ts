@@ -1,4 +1,3 @@
-// Generic types for API responses
 interface ApiErrorResponse {
   message: string;
   [key: string]: unknown;
